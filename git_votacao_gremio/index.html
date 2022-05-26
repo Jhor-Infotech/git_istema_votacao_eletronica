@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/votacao.css">
+    <title>Votação Grêmio Estudantil 2022</title>
+</head>
+
+<body>
+    <!-- Documento HTML -->
+
+    <div id="container">
+        <div class="titulos">
+            <h1>Escola Estadual Condomínio Varegem Grande II</h1>
+        </div>
+        <div class="titulos">
+            <h2>Eleição Grêmio Estudantil 2022</h2>
+        </div>
+
+        <div id="container-candidatos">
+            <div class="candidato" id="div-chapa01">
+                <h3>OS REVOLUCIONÁRIOS</h3>
+                <div class="imagem" id="imagem01"> <img id="imagem-chapa01" class="imagens" src="./assets/os_revolucionarios.jpeg" alt="CHAPA 01"></div>
+                <button type="submit" id="vote-chapa01" class="botao01">VOTAR</button>
+                <span class="spanDisplay" id="span-chapa01"></span>
+            </div>
+            <div class="candidato" id="div-chapaNulo">
+                <h3>NULO</h3>
+                <div class="imagem" id="imagemVotoNulo"> <img id="imagem-votoNulo" class="imagens" src="./assets/votoNulo.png" alt="CHAPA 01"></div>
+                <button type="submit" id="vote-nulo" class="botao01">ANULAR</button>
+                <span class="spanDisplay" id="span-nulo"></span>
+            </div>
+            <div class="candidato" id="div-chapa02">
+                <h3>QUATRO ELEMENTOS</h3>
+                <div class="imagem" id="imagem03"> <img class="imagens" src="./assets/quatro_elementos.jpeg" alt="CHAPA 02"></div>
+                <button type="submit" id="vote-chapa02" class="botao01">VOTAR</button>
+                <span class="spanDisplay" id="span-chapa02"></span>
+            </div>
+        </div>
+
+
+        <div class="total-votos-chapas">
+            <h2>TOTAL DE VOTOS OS REVOLUCIONÁRIOS</h2>
+            <span id="total-votos-chapa01"></span>
+        </div>
+
+        <div class="total-votos-chapas">
+            <h2>TOTAL DE VOTOS NULOS</h2>
+            <span id="total-votos-nulos"></span>
+        </div>
+        <div class="total-votos-chapas">
+            <h2>TOTAL DE VOTOS QUATRO ELEMENTOS</h2>
+            <span id="total-votos-chapa02"></span>
+        </div>
+        <div id="div-votos-computados">
+            <h2>TOTAL DE VOTOS VÁLIDOS COMPUTADOS</h2>
+            <span id="total-votos-computados"></span>
+        </div>
+
+        <div id="div-chapa-vencedora">
+            <!-- <h2>CHAPA VENCEDORA</h2> -->
+            <div>
+                <button type="submit" id="button-chapa-campea">REVELAR RESULTADO</button>
+            </div>
+            <span id="chapa-campea"></span>
+        </div>
+
+    </div>
+    <script src="./assets/votacao.js"></script>
+
+</body>
+
+</html>

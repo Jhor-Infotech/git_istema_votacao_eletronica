@@ -1,0 +1,106 @@
+body {
+    background-color: lightgrey;
+}
+
+.titulos {
+    background-color: lightgreen;
+    text-align: center;
+    height: 55px;
+    padding: 3px;
+}
+
+#container-candidatos {
+    display: flex;
+    background-color: lightgrey;
+    text-align: center;
+    /* width: 50%; */
+    height: auto;
+    /* margin: 25px; */
+}
+
+.candidato {
+    /* background-color: rgb(200, 54, 198); */
+    width: 50%;
+    margin: 1em;
+    padding: 1px;
+    text-align: center;
+    /* cursor: pointer; */
+}
+
+.spanDisplay {
+    display: none;
+    color: blue;
+    font-size: small;
+}
+
+.imagens {
+    /* background-color: blue; */
+    width: 350px;
+    height: 350px;
+    /* margin: 25px; */
+    /* padding: 10px; */
+    border-radius: 110px;
+}
+
+button {
+    cursor: pointer;
+}
+
+.botao01 {
+    background-color: lightgreen;
+    width: 200px;
+    height: 80px;
+    margin: 35px;
+    padding: 25px;
+    text-align: center;
+    font-weight: bolder;
+    border-radius: 52px
+}
+
+.total-votos-chapas {
+    display: inline-block;
+    background-color: lightcyan;
+    width: 33%;
+    height: auto;
+    /* margin: 10px; */
+    text-align: center;
+    color: blue;
+    /* font-size: small; */
+    border-radius: 22px;
+}
+
+#div-votos-computados {
+    background-color: lightgreen;
+    text-align: center;
+    height: auto;
+    margin: 25px;
+    border-radius: 22px
+}
+
+span {
+    text-align: center;
+    font-size: 4em;
+}
+
+#div-chapa-vencedora {
+    /* background-color: lightgreen; */
+    text-align: center;
+    /* width: 50%; */
+    height: auto;
+    margin: 25px;
+}
+
+#button-chapa-campea {
+    background-color: red;
+    font-size: 15pt;
+    font-weight: bolder;
+    text-align: center;
+    width: 30%;
+    height: 100px;
+    margin: 10px;
+    border-radius: 22px
+}
+
+#chapa-campea {
+    height: auto;
+}

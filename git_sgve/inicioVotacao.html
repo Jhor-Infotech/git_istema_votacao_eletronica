@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/inicioVotacao.css">
+    <!-- <link rel="stylesheet" href="./assets/votacao.css"> -->
+    <title>Sistema Genérico de Votação Eletrônica</title>
+</head>
+<body>
+    <div id="titulos">
+        <h1>Escola Estadual Condomínio Vargem Grande II</h1>
+        <h2>Sistema Genérico de Votação Eletrônica</h2>
+    </div>
+
+    <div id="apresentacao">
+        <h1 style="color:white;border-radius: 35px;">Digite o número do seu candidato e tecle ENTER</h1>
+        <!-- <h3 style="background-color:blueviolet;color:white;border-radius: 35px;">Digite o número do seu candidato e tecle ENTER</h3> -->
+        <input type="text" name="numero-candidato" id="numero-candidato" placeholder="DIGITE no formato 1234 "> <br>
+        <div>
+            <!-- Span para exibir o número de votos computados -->
+            <span id="span-votos-computados">Votos Computados</span>
+        </div>
+        
+    </div>
+    <div id="div-span">
+        <div class="div-span">
+            <span id="span-votos-validos">VOTOS VÁLIDOS</span>
+        </div>
+        
+        <div class="div-span">
+            <span id="span-votos-candidato01">VOTOS CANDIDATO 01</span>
+        </div>
+        
+        <div class="div-span">
+            <span id="span-votos-candidato02">VOTOS CANDIDATO 02</span>
+        </div>
+        <div class="div-span">
+            <span id="span-votos-nulos">VOTOS NULOS</span>
+        </div>
+    </div>
+
+    <script src="./assets/inicioVotacao.js"></script>
+</body>
+
+</html>

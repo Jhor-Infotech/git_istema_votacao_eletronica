@@ -1,0 +1,43 @@
+body {
+    text-align: center;
+}
+
+.imagens {
+    background-color: blue;
+    width: 550px;
+    height: 379px;
+    text-align: center;
+    margin: 25px;
+    padding: 25px;
+    border-radius: 35px;
+}
+
+.div-confirmar_corrigir {
+    background-color: lightpink;
+    height: auto;
+    margin: 5px;
+    padding: 10px;
+    text-align: center;
+    border-radius: 25px;
+}
+
+.confirma-corrige {
+    display: inline-block;
+    width: 30%;
+    margin: 10px;
+    padding: 10px;
+    font-size: 1.5em;
+    text-align: center;
+    border-radius: 25px;
+}
+
+#confirma {
+    background-color: green;
+    color: white;
+}
+
+#corrige {
+    background-color: rgba(163, 163, 15, 0.7);
+    /* font-size: 1.5em; */
+    color: white;
+}
