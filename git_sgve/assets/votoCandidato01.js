@@ -11,7 +11,7 @@ function votar(event) {
             // Invocando as funções "computarVotosNulos() etc" da página mãe (inicioVotacao.html) para somar e acumular o voto após a confirmação "ENTER"
             opener.ComputarVotosCandidato01();
             opener.computarTotalVotos();
-            opener.computarTotalVotosvalidos();
+            // opener.computarTotalVotosValidos();
             window.close();
         }, 2000);
         // opener.computarTotalVotos();
