@@ -1,7 +1,7 @@
 // Guardando  array de objetos em arquivo Json numa variável para manipulações com JS
 // Cada objeto possui pelo menos 12 pares "chave/valor"
 
-let testeJson = `[{
+let dadosAlunos = `[{
     "01\/06\/2022 07:29": "Dados",
     "Column2": null,
     "Column3": null,
@@ -30924,10 +30924,10 @@ null, {
     "Column12": "CONDOMINIO VARGEM GRANDE II"
 }]`;
 
-// console.log(testeJson);
-let jsonTeste = JSON.parse(testeJson);
-// // Imprimindo informação específica de um objeto nº6 (posição 5 do array) 
-console.log("\n quebrei uma linha \n" + jsonTeste[5].Column12 + "\n quebrei uma linha \n");
+let objetoDadosAlunos = JSON.parse(dadosAlunos);
+// Imprimindo informação específica de um objeto nº6 (posição 5 do array) 
+console.log("\n quebrei uma linha \n" + objetoDadosAlunos [5].Column12 + "\n quebrei uma linha \n");
 
-// // const jsonEditado = testeJson.split("");
-// console.log(testeJson.toString().split(','));
+
+let stringDadosAlunos = JSON.stringify(dadosAlunos);
+console.log (stringDadosAlunos);
