@@ -85,8 +85,9 @@ function ComputarVotosCandidato01() {
         // Se houver a chave "votosComputados" no Storage, seu valor será incrementado a cada chamada da função "computarTotalVotos"...
         if (localStorage.votosCandidato01 && localStorage.totalVotosValidos) {
             localStorage.votosCandidato01 = Number(localStorage.votosCandidato01) + 1;
-            console.log(localStorage.votosCandidato01);
-            localStorage.totalVotosValidos = Number(localStorage.votosCandidato01);
+            // console.log(localStorage.votosCandidato01);
+            localStorage.totalVotosValidos = Number(localStorage.votosCandidato01) + Number(localStorage.votosCandidato02);
+            // localStorage.totalVotosValidos = Number(localStorage.totalVotosValidos) +1;
             // Exibindo os votos computados no painel da página mãe
             votosCandidato01.innerHTML = "João Grilo: <br> " + (localStorage.votosCandidato01);
             votosValidos.innerHTML = "Total votos válidos: <br> " + (localStorage.totalVotosValidos);
@@ -98,6 +99,7 @@ function ComputarVotosCandidato01() {
             localStorage.votosCandidato01 = 1;
             console.log(localStorage.votosCandidato01);
             localStorage.totalVotosValidos = Number(localStorage.votosCandidato01);
+            console.log(localStorage.totalVotosValidos);
             // Exibindo os votos computados no painel da página mãe
             votosCandidato01.innerHTML = "João Grilo: <br> " + (localStorage.votosCandidato01);
             votosValidos.innerHTML = "Total votos válidos: <br> " + (localStorage.totalVotosValidos);
@@ -113,7 +115,8 @@ function ComputarVotosCandidato02() {
         if (localStorage.votosCandidato02 && localStorage.totalVotosValidos) {
             localStorage.votosCandidato02 = Number(localStorage.votosCandidato02) + 1;
             console.log(localStorage.votosCandidato02);
-            localStorage.totalVotosValidos = localStorage.votosCandidato02;
+            // localStorage.totalVotosValidos = localStorage.votosCandidato02;
+            localStorage.totalVotosValidos = Number(localStorage.votosCandidato01) + Number(localStorage.votosCandidato02);
             // Exibindo os votos computados no painel da página mãe
             votosCandidato02.innerHTML = "Chicó: <br> " + (localStorage.votosCandidato02);
             votosValidos.innerHTML = "Total votos válidos: <br> " + (localStorage.totalVotosValidos);
