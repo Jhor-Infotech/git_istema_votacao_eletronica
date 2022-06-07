@@ -30909,7 +30909,6 @@ function digitarRaAluno() {
         recarregarPaginaMae();
     }
 }
-
 function recarregarPaginaMae() {
     location.reload();
 }
@@ -31044,5 +31043,21 @@ function ComputarVotosNulos() {
             // Exibindo os votos computados no painel da página mãe
             votosNulos.innerHTML = "Votos Nulos: <br> " + (localStorage.votosNulos);
         }
+        // totalVotosValidos();
     }
+}
+
+// Função para computar total de votos válidos
+function totalVotosValidos (){
+    if (localStorage.totalVotosValidos) {
+        localStorage.totalVotosValidos = (Number(localStorage.totalVotosValidos) + 1);
+        console.log(localStorage.totalVotosValidos);
+        votosValidos.innerHTML = "Total votos válidos: <br> " + (localStorage.totalVotosValidos);
+        console.log(votosValidos.innerHTML);
+    } else {
+        localStorage.totalVotosValidos = 1;
+        // Exibindo os votos computados no painel da página mãe
+        votosValidos.innerHTML = "Total votos válidos: <br> " + (localStorage.totalVotosValidos);
+        console.log(votosValidos.innerHTML);
+  }
 }

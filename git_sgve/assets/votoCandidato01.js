@@ -9,16 +9,15 @@ function votar(event) {
         */
         setTimeout(() => {
             // Invocando as funções "computarVotosNulos() etc" da página mãe (inicioVotacao.html) para somar e acumular o voto após a confirmação "ENTER"
-            opener.computarTotalVotos();
+            
             opener.ComputarVotosCandidato01();
+            opener.computarTotalVotos();
             opener.recarregarPaginaMae();
             window.close();
-
+            // opener.recarregarPaginaMae();
+            window.close();
         }, 2000);
-
-        // opener.computarTotalVotos();
         som.play();
-
     } else if (event.which == 48) {
         // Função para aguardar 500 milissegundos (1/2 segundo) para o auto fechamento do popup e o eleitor reiniciar a votação
         setTimeout(() => {
