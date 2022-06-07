@@ -31000,7 +31000,7 @@ function ComputarVotosCandidato01() {
             votosCandidato01.innerHTML = "João Grilo: <br> " + (localStorage.votosCandidato01);
         }
         // Invocando a função para computar total de votos válidos
-        totalVotosValidos ();
+        totalVotosValidos();
     }
 }
 
@@ -31023,7 +31023,7 @@ function ComputarVotosCandidato02() {
             votosCandidato02.innerHTML = "Chicó: <br> " + (localStorage.votosCandidato02);
         }
         // Invocando a função para computar total de votos válidos
-        totalVotosValidos ();
+        totalVotosValidos();
     }
 }
 
@@ -31044,55 +31044,5 @@ function ComputarVotosNulos() {
             // Exibindo os votos computados no painel da página mãe
             votosNulos.innerHTML = "Votos Nulos: <br> " + (localStorage.votosNulos);
         }
-    }
-}
-<<<<<<< HEAD
-//              ...............
-//........................................Criando elemento lista dianmicamente ....................................
-// listaRaAlunos.forEach(function(raAlunos) {
-//     let itemLista = document.createElement("li");
-//     itemLista.innerHTML = raAlunos;
-//     testeLista.appendChild(itemLista);
-// });
-
-
-/*
-//................................... Esta função é desnecessária...............
-function computarTotalVotosValidos() {
-    // Se o browser suportar webStorage (local Storage e Session Storage), execute os comandos seguintes
-    if (typeof(Storage) != "undefined") {
-        // Se houver as chaves "votosValidos" e "VotosNulos" no Storage, seus valores serão incrementados a cada chamada da função "computarTotalVotosValidos"...
-        if (localStorage.totalVotosValidos) {
-            // localStorage.votosValidos = Number(localStorage.votosValidos) + 1;
-            localStorage.totalVotosValidos = Number(localStorage.votosCandidato01) + Number(localStorage.votosCandidato02);
-            console.log(localStorage.votosValidos);
-            // Exibindo os votos computados no painel da página mãe
-            votosValidos.innerHTML = "Total votos válidos: <br> " + (localStorage.totalVotosValidos);
-            console.log(votosValidos.innerHTML);
-            // ... houver as chaves "votosValidos" e "VotosNulos" no Storage, a função "computarTotalVotosValidos" 
-            // criará as chaves "VotosNulos" com valor = 0 e "votosValidos" com valor Number(localStorage.votosCandidato01) + Number(localStorage.votosCandidato02)
-            // a ser incrementado a cada chamada da função "computarTotalVotos"
-        } else {
-            localStorage.totalVotosValidos = (Number(localStorage.votosCandidato01) + Number(localStorage.votosCandidato02));
-            console.log(localStorage.totalVotosValidos);
-            // Exibindo os votos computados no painel da página mãe
-            votosValidos.innerHTML = "Total votos válidos: <br> " + (localStorage.totalVotosValidos);
-            console.log(votosValidos.innerHTML);
-        }
-=======
-
-// Função para computar total de votos válidos
-function totalVotosValidos (){
-    if (localStorage.totalVotosValidos) {
-        localStorage.totalVotosValidos = (Number(localStorage.totalVotosValidos) + 1);
-        console.log(localStorage.totalVotosValidos);
-        votosValidos.innerHTML = "Total votos válidos: <br> " + (localStorage.totalVotosValidos);
-        console.log(votosValidos.innerHTML);
-    } else {
-        localStorage.totalVotosValidos = 1;
-        // Exibindo os votos computados no painel da página mãe
-        votosValidos.innerHTML = "Total votos válidos: <br> " + (localStorage.totalVotosValidos);
-        console.log(votosValidos.innerHTML);
->>>>>>> c170a3ee36a8a41498415ef2dc81b904587488f4
     }
 }
