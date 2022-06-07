@@ -30999,17 +30999,8 @@ function ComputarVotosCandidato01() {
             // Exibindo os votos computados no painel da página mãe
             votosCandidato01.innerHTML = "João Grilo: <br> " + (localStorage.votosCandidato01);
         }
-    }
-    if (localStorage.totalVotosValidos) {
-        localStorage.totalVotosValidos = (Number(localStorage.totalVotosValidos) + 1);
-        console.log(localStorage.totalVotosValidos);
-        votosValidos.innerHTML = "Total votos válidos: <br> " + (localStorage.totalVotosValidos);
-        console.log(votosValidos.innerHTML);
-    } else {
-        localStorage.totalVotosValidos = 1;
-        // Exibindo os votos computados no painel da página mãe
-        votosValidos.innerHTML = "Total votos válidos: <br> " + (localStorage.totalVotosValidos);
-        console.log(votosValidos.innerHTML);
+        // Invocando a função para computar total de votos válidos
+        totalVotosValidos ();
     }
 }
 
@@ -31031,17 +31022,8 @@ function ComputarVotosCandidato02() {
             // Exibindo os votos computados no painel da página mãe
             votosCandidato02.innerHTML = "Chicó: <br> " + (localStorage.votosCandidato02);
         }
-    }
-    if (localStorage.totalVotosValidos) {
-        localStorage.totalVotosValidos = (Number(localStorage.totalVotosValidos) + 1);
-        console.log(localStorage.totalVotosValidos);
-        votosValidos.innerHTML = "Total votos válidos: <br> " + (localStorage.totalVotosValidos);
-        console.log(votosValidos.innerHTML);
-    } else {
-        localStorage.totalVotosValidos = 1;
-        // Exibindo os votos computados no painel da página mãe
-        votosValidos.innerHTML = "Total votos válidos: <br> " + (localStorage.totalVotosValidos);
-        console.log(votosValidos.innerHTML);
+        // Invocando a função para computar total de votos válidos
+        totalVotosValidos ();
     }
 }
 
@@ -31064,6 +31046,7 @@ function ComputarVotosNulos() {
         }
     }
 }
+<<<<<<< HEAD
 //              ...............
 //........................................Criando elemento lista dianmicamente ....................................
 // listaRaAlunos.forEach(function(raAlunos) {
@@ -31096,6 +31079,20 @@ function computarTotalVotosValidos() {
             votosValidos.innerHTML = "Total votos válidos: <br> " + (localStorage.totalVotosValidos);
             console.log(votosValidos.innerHTML);
         }
+=======
+
+// Função para computar total de votos válidos
+function totalVotosValidos (){
+    if (localStorage.totalVotosValidos) {
+        localStorage.totalVotosValidos = (Number(localStorage.totalVotosValidos) + 1);
+        console.log(localStorage.totalVotosValidos);
+        votosValidos.innerHTML = "Total votos válidos: <br> " + (localStorage.totalVotosValidos);
+        console.log(votosValidos.innerHTML);
+    } else {
+        localStorage.totalVotosValidos = 1;
+        // Exibindo os votos computados no painel da página mãe
+        votosValidos.innerHTML = "Total votos válidos: <br> " + (localStorage.totalVotosValidos);
+        console.log(votosValidos.innerHTML);
+>>>>>>> c170a3ee36a8a41498415ef2dc81b904587488f4
     }
 }
-*/
