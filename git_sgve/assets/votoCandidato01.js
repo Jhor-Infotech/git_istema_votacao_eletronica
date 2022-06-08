@@ -9,7 +9,7 @@ function votar(event) {
         */
         setTimeout(() => {
             // Invocando as funções "computarVotosNulos() etc" da página mãe (inicioVotacao.html) para somar e acumular o voto após a confirmação "ENTER"
-            
+
             opener.ComputarVotosCandidato01();
             opener.computarTotalVotos();
             opener.recarregarPaginaMae();

@@ -60,11 +60,22 @@
 .div-span {
     background-color: lightseagreen;
     display: inline-block;
-    /* width: 20%; */
-    width: auto;
+    width: 20%;
+    /* width: auto; */
     height: 35px;
     margin: 15px;
     padding: 5px;
     text-align: center;
+    border-radius: 15px;
+}
+
+#span-resultado {
+    background-color: lightgreen;
+    text-align: center;
+    width: auto;
+    height: auto;
+    font-size: 3em;
+    /* margin: 50px; */
+    /* padding-top: 55px; */
     border-radius: 15px;
 }

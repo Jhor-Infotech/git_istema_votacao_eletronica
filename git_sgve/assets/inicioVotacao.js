@@ -30867,15 +30867,10 @@ let votosValidos = document.getElementById("span-votos-validos");
 let votosCandidato01 = document.getElementById("span-votos-candidato01");
 let votosCandidato02 = document.getElementById("span-votos-candidato02");
 let votosNulos = document.getElementById("span-votos-nulos");
-// Variável auxiliar para o array de RAs votantes
-localStorage.rasVotantes = votantes = [];
-
-// Variávei auxiliares para contagem de votos
-// let totalVotosCandidato01 = 0;
-// let totalVotosCandidato02 = 0;
-// let totalVotosNulos = 0;
-// let totalVotosComputados = 0;
-// let totalVotosValidos = 0;
+let spanResultados = document.getElementById("span-resultado");
+let rasVotantes = [];
+console.log(rasVotantes);
+// localStorage.listaRasVotantes = rasVotantes;
 
 //.......................................................................................
 
@@ -30890,25 +30885,42 @@ const listaRaAlunos = dadosAlunos.map(({ RA }) => RA);
 window.onload = (digitarRaAluno);
 
 function digitarRaAluno() {
-    let raInformado = Number(prompt("digite o RA"));
-    // console.log(raEncontrado);
+    let raInformado = Number(prompt("digite seu RA ou o código de encerramento"));
+
     let raEncontrado = listaRaAlunos.find(function(raEncontrado) {
         return raEncontrado === raInformado;
     });
-    // Os RAs votantes deverão ser armazenados no localStorage e não permitir votar mais de uma vez
+
     if (raEncontrado === raInformado) {
-        // alert("ok");
-        // Capturando evento de teclado para manipular o input
+        // Se o RA encontrado pelo laço acima(find) for igual ao RA informado, 
+        // libera a página para captura do evento de teclado para manipular o input
         inputNumeroCandidato.addEventListener("keyup", votar);
+
+        // ................................................................................................
+        // Os RAs votantes deverão ser armazenados no localStorage e não permitir votar mais de uma vez
+        // A implementar
+
+        // .............................................................................
+        rasVotantes.push(JSON.stringify(raEncontrado));
+        console.log(rasVotantes);
         if (localStorage.rasVotantes) {
-            votantes.push(Number(raEncontrado));
-            console.log(localStorage.rasVotantes);
+            localStorage.listaRasVotantes = rasVotantes
+        } else {
+            localStorage.listaRasVotantes = [(JSON.stringify(raEncontrado))];
+            console.log(localStorage.listaRasVotantes);
         }
+
+        // Se o RA informado for igual a 1010, encerra a votação, função a ser implementada
+    } else if (raInformado === 1010) {
+        alert("VOTAÇÃO ENCERRADA!!");
+        // fUNÇÃO DE ENCERRAMENTO: a página deverá apresentar a computação dos votos(total, válidos, nulos, candidatos 01 e 02)
+        encerraVotacao();
     } else {
         alert("RA INVÁLIDO!!!!");
         recarregarPaginaMae();
     }
 }
+
 function recarregarPaginaMae() {
     location.reload();
 }
@@ -30973,9 +30985,9 @@ function computarTotalVotos() {
         } else {
             localStorage.votosComputados = 1;
             console.log(localStorage.votosComputados);
-            // Exibindo os votos computados no painel da página mãe
-            votosComputados.innerHTML = "Votos computados <br> " + (localStorage.votosComputados);
-            // console.log(votosComputados.innerHTML);
+            // // Exibindo os votos computados no painel da página mãe
+            // votosComputados.innerHTML = "Votos computados <br> " + (localStorage.votosComputados);
+            // // console.log(votosComputados.innerHTML);
         }
     }
 }
@@ -31040,15 +31052,15 @@ function ComputarVotosNulos() {
         } else {
             localStorage.votosNulos = 1;
             console.log(localStorage.votosNulos);
-            // Exibindo os votos computados no painel da página mãe
-            votosNulos.innerHTML = "Votos Nulos: <br> " + (localStorage.votosNulos);
+            // // Exibindo os votos computados no painel da página mãe
+            // votosNulos.innerHTML = "Votos Nulos: <br> " + (localStorage.votosNulos);
         }
         // totalVotosValidos();
     }
 }
 
 // Função para computar total de votos válidos
-function totalVotosValidos (){
+function totalVotosValidos() {
     if (localStorage.totalVotosValidos) {
         localStorage.totalVotosValidos = (Number(localStorage.totalVotosValidos) + 1);
         console.log(localStorage.totalVotosValidos);
@@ -31056,8 +31068,28 @@ function totalVotosValidos (){
         console.log(votosValidos.innerHTML);
     } else {
         localStorage.totalVotosValidos = 1;
-        // Exibindo os votos computados no painel da página mãe
-        votosValidos.innerHTML = "Total votos válidos: <br> " + (localStorage.totalVotosValidos);
-        console.log(votosValidos.innerHTML);
-  }
+        // // Exibindo os votos computados no painel da página mãe
+        // votosValidos.innerHTML = "Total votos válidos: <br> " + (localStorage.totalVotosValidos);
+        // console.log(votosValidos.innerHTML);
+    }
+}
+
+function encerraVotacao() {
+    // Exibindo os votos computados no painel da página mãe
+    votosComputados.innerHTML = "Votos computados <br> " + (localStorage.votosComputados);
+    console.log(votosComputados.innerHTML);
+    votosValidos.innerHTML = "Total votos válidos: <br> " + (localStorage.totalVotosValidos);
+    console.log(votosValidos.innerHTML);
+    votosNulos.innerHTML = "Votos Nulos: <br> " + (localStorage.votosNulos);
+    console.log(votosNulos.innerHTML);
+    votosCandidato01.innerHTML = "João Grilo: <br> " + (localStorage.votosCandidato01);
+    console.log(votosCandidato01.innerHTML);
+    votosCandidato02.innerHTML = "Chicó: <br> " + (localStorage.votosCandidato02);
+    console.log(votosCandidato02.innerHTML);
+    // Exibindo o candidato vencedor
+    if (localStorage.votosCandidato01 > localStorage.votosCandidato02) {
+        spanResultados.innerHTML = ("CANDIDATO VENCEDOR: <br>" + votosCandidato01.innerHTML + " <br> VOTOS");
+    } else if (localStorage.votosCandidato01 < localStorage.votosCandidato02) {
+        spanResultados.innerHTML = ("CANDIDATO VENCEDOR: <br>" + votosCandidato02.innerHTML + " <br> VOTOS");
+    }
 }
