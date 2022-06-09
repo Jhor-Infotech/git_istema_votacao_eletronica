@@ -30909,6 +30909,18 @@ function digitarRaAluno() {
             localStorage.listaRasVotantes = [(JSON.stringify(raEncontrado))];
             console.log(localStorage.listaRasVotantes);
         }
+        /*
+                // Armazenando o array de (objetos) alunos no localStorage
+                localStorage.setItem("listaDadosAlunos", JSON.stringify(dadosAlunos));
+
+                // Declarando a variável dadosAlunos como objeto para manipulação (iteração)
+                const objetoListaDadosAlunos = JSON.parse(localStorage.getItem("listaDadosAlunos"));
+                // console.log(objetoListaDadosAlunos);
+                for (let aluno of objetoListaDadosAlunos) {
+                    console.log(aluno.RA);
+                    console.log(aluno.Nome);
+                            }
+         */
 
         // Se o RA informado for igual a 1010, encerra a votação, função a ser implementada
     } else if (raInformado === 1010) {
