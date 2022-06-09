@@ -30920,6 +30920,25 @@ function digitarRaAluno() {
                     console.log(aluno.RA);
                     console.log(aluno.Nome);
                             }
+
+                            .........................................................
+
+                            
+                            // Buscando elemento HTML para manipulação no JS
+let listaOrdenada = document.getElementById("lista-ra");
+
+// Declarando (parseando) a variável dadosAlunos como objeto para manipulação (iteração)
+const objetoListaDadosAlunos = JSON.parse(localStorage.getItem("listaDadosAlunos"));
+// console.log(objetoListaDadosAlunos);
+for (let aluno of objetoListaDadosAlunos) {
+
+    let elementoLista = document.createElement("li");
+    elementoLista.innerHTML = aluno.Nome + " - RA: " + aluno.RA;
+    listaOrdenada.insertAdjacentElement("beforebegin", elementoLista)
+        // console.log(aluno.RA);
+        // console.log(aluno.Nome);
+
+}
          */
 
         // Se o RA informado for igual a 1010, encerra a votação, função a ser implementada
