@@ -30868,78 +30868,51 @@ let votosCandidato01 = document.getElementById("span-votos-candidato01");
 let votosCandidato02 = document.getElementById("span-votos-candidato02");
 let votosNulos = document.getElementById("span-votos-nulos");
 let spanResultados = document.getElementById("span-resultado");
-let rasVotantes = [];
-console.log(rasVotantes);
+// Variável auxiliar para validação de RAs e evitar que o mesmo RA vote mais de uma vez
+// let rasVotantes = [];
+// console.log(rasVotantes);
 // localStorage.listaRasVotantes = rasVotantes;
 
 //.......................................................................................
 
 // Exibindo numa variável apenas o elemento "RA"(RAs) do objeto aluno
 const listaRaAlunos = dadosAlunos.map(({ RA }) => RA);
-// Armazenando os RAs de alunos no localStorage
-// localStorage.raDeAlunos = listaRaAlunos;
-// console.log(localStorage.raDeAlunos);
-// console.log(listaRaAlunos);
-// console.log(listaRaAlunos[5]);
 
 window.onload = (digitarRaAluno);
 
 function digitarRaAluno() {
     let raInformado = Number(prompt("digite seu RA ou o código de encerramento"));
 
+    let rasVotantes = JSON.parse(localStorage.getItem("ListaVotantes"));
+    console.log(rasVotantes);
+
     let raEncontrado = listaRaAlunos.find(function(raEncontrado) {
         return raEncontrado === raInformado;
     });
 
     if (raEncontrado === raInformado) {
-        // Se o RA encontrado pelo laço acima(find) for igual ao RA informado, 
+        if (rasVotantes == null) {
+            localStorage.setItem("ListaVotantes", "[]");
+            rasVotantes = [111222333];
+            console.log(rasVotantes);
+        }
+        // .......... REVER ESTA CONDICIONAL PARA NÃO PERMITIR INSERÇÃO DUPLICADA DE "RA" ......................
+        let ra = JSON.parse(localStorage.ListaVotantes).find(function(ra) {
+            return ra === raInformado;
+        });
+        if (raInformado === ra) {
+            alert("Votação concluida para o RA informado!!");
+            recarregarPaginaMae();
+        }
+        //.................................................
+        rasVotantes.push(raInformado);
+        console.log(rasVotantes);
+        localStorage.setItem("ListaVotantes", JSON.stringify(rasVotantes));
+        console.log(localStorage.ListaVotantes);
+
+
         // libera a página para captura do evento de teclado para manipular o input
         inputNumeroCandidato.addEventListener("keyup", votar);
-
-        // ................................................................................................
-        // Os RAs votantes deverão ser armazenados no localStorage e não permitir votar mais de uma vez
-        // A implementar
-
-        // .............................................................................
-        rasVotantes.push(JSON.stringify(raEncontrado));
-        console.log(rasVotantes);
-        if (localStorage.rasVotantes) {
-            localStorage.listaRasVotantes = rasVotantes
-        } else {
-            localStorage.listaRasVotantes = [(JSON.stringify(raEncontrado))];
-            console.log(localStorage.listaRasVotantes);
-        }
-        /*
-                // Armazenando o array de (objetos) alunos no localStorage
-                localStorage.setItem("listaDadosAlunos", JSON.stringify(dadosAlunos));
-
-                // Declarando a variável dadosAlunos como objeto para manipulação (iteração)
-                const objetoListaDadosAlunos = JSON.parse(localStorage.getItem("listaDadosAlunos"));
-                // console.log(objetoListaDadosAlunos);
-                for (let aluno of objetoListaDadosAlunos) {
-                    console.log(aluno.RA);
-                    console.log(aluno.Nome);
-                            }
-
-                            .........................................................
-
-                            
-                            // Buscando elemento HTML para manipulação no JS
-let listaOrdenada = document.getElementById("lista-ra");
-
-// Declarando (parseando) a variável dadosAlunos como objeto para manipulação (iteração)
-const objetoListaDadosAlunos = JSON.parse(localStorage.getItem("listaDadosAlunos"));
-// console.log(objetoListaDadosAlunos);
-for (let aluno of objetoListaDadosAlunos) {
-
-    let elementoLista = document.createElement("li");
-    elementoLista.innerHTML = aluno.Nome + " - RA: " + aluno.RA;
-    listaOrdenada.insertAdjacentElement("beforebegin", elementoLista)
-        // console.log(aluno.RA);
-        // console.log(aluno.Nome);
-
-}
-         */
 
         // Se o RA informado for igual a 1010, encerra a votação, função a ser implementada
     } else if (raInformado === 1010) {
