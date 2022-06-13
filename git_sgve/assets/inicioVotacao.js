@@ -30900,11 +30900,19 @@ function digitarRaAluno() {
             return ra === raInformado;
         });
         if (raInformado === ra) {
+<<<<<<< HEAD
             audioErroWindows.play();
             alert("Votação concluida para o RA informado!!");
             setTimeout(() => {
                 recarregarPaginaMae();
             }, 1500);
+=======
+        audioErroWindows.play();
+        alert("Votação concluida para o RA informado!!");
+       setTimeout(() => {
+           recarregarPaginaMae();
+           },1000);
+>>>>>>> 94eabde10c0f867c4afb2dd857a1d0f8bde39cc5
         }
         //...............................................
         rasVotantes.push(raInformado);
@@ -30924,11 +30932,19 @@ function digitarRaAluno() {
         encerraVotacao();
     } else {
         audioErroUrna.play();
+<<<<<<< HEAD
         alert("RA INVÁLIDO!!!!");
         setTimeout(() => {
             recarregarPaginaMae();
         }, 1500);
     }
+=======
+         alert("RA INVÁLIDO!!!!");
+        setTimeout(() => {
+            recarregarPaginaMae();
+            },1000);
+        }    
+>>>>>>> 94eabde10c0f867c4afb2dd857a1d0f8bde39cc5
 }
 
 function recarregarPaginaMae() {
