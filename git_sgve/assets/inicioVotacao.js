@@ -30900,21 +30900,13 @@ function digitarRaAluno() {
             return ra === raInformado;
         });
         if (raInformado === ra) {
-<<<<<<< HEAD
             audioErroWindows.play();
             alert("Votação concluida para o RA informado!!");
             setTimeout(() => {
                 recarregarPaginaMae();
-            }, 1500);
-=======
-        audioErroWindows.play();
-        alert("Votação concluida para o RA informado!!");
-       setTimeout(() => {
-           recarregarPaginaMae();
-           },1000);
->>>>>>> 94eabde10c0f867c4afb2dd857a1d0f8bde39cc5
+            }, 1000);
         }
-        //...............................................
+        //.................................................
         rasVotantes.push(raInformado);
         console.log(rasVotantes);
         localStorage.setItem("ListaVotantes", JSON.stringify(rasVotantes));
@@ -30929,22 +30921,17 @@ function digitarRaAluno() {
         audioUrna.play();
         alert("VOTAÇÃO ENCERRADA!!");
         // fUNÇÃO DE ENCERRAMENTO: a página deverá apresentar a computação dos votos(total, válidos, nulos, candidatos 01 e 02)
-        encerraVotacao();
+        setTimeout(() => {
+            encerraVotacao();
+        }, 1000);
+
     } else {
         audioErroUrna.play();
-<<<<<<< HEAD
         alert("RA INVÁLIDO!!!!");
         setTimeout(() => {
             recarregarPaginaMae();
-        }, 1500);
+        }, 1000);
     }
-=======
-         alert("RA INVÁLIDO!!!!");
-        setTimeout(() => {
-            recarregarPaginaMae();
-            },1000);
-        }    
->>>>>>> 94eabde10c0f867c4afb2dd857a1d0f8bde39cc5
 }
 
 function recarregarPaginaMae() {
@@ -31115,7 +31102,11 @@ function encerraVotacao() {
     // Exibindo o candidato vencedor
     if (localStorage.votosCandidato01 > localStorage.votosCandidato02) {
         spanResultados.innerHTML = ("CANDIDATO VENCEDOR: <br>" + votosCandidato01.innerHTML + " <br> VOTOS");
+        console.log(spanResultados.innerHTML);
     } else if (localStorage.votosCandidato01 < localStorage.votosCandidato02) {
         spanResultados.innerHTML = ("CANDIDATO VENCEDOR: <br>" + votosCandidato02.innerHTML + " <br> VOTOS");
+        console.log(spanResultados.innerHTML);
+    } else {
+        spanResultados.innerHTML = ("VOTAÇÃO EMPATADA COM " + localStorage.totalVotosValidos / 2 + " para cada candidato.");
     }
 }
