@@ -30868,10 +30868,9 @@ let votosCandidato01 = document.getElementById("span-votos-candidato01");
 let votosCandidato02 = document.getElementById("span-votos-candidato02");
 let votosNulos = document.getElementById("span-votos-nulos");
 let spanResultados = document.getElementById("span-resultado");
-// Variável auxiliar para validação de RAs e evitar que o mesmo RA vote mais de uma vez
-// let rasVotantes = [];
-// console.log(rasVotantes);
-// localStorage.listaRasVotantes = rasVotantes;
+const audioUrna = new Audio("./assets/urna01.mp3");
+const audioErroUrna = new Audio("./assets/Erro.mp3");
+const audioErroWindows = new Audio("./assets/ErroWindows.mp3");
 
 //.......................................................................................
 
@@ -30893,7 +30892,7 @@ function digitarRaAluno() {
     if (raEncontrado === raInformado) {
         if (rasVotantes == null) {
             localStorage.setItem("ListaVotantes", "[]");
-            rasVotantes = [111222333];
+            rasVotantes = [];
             console.log(rasVotantes);
         }
         // .......... REVER ESTA CONDICIONAL PARA NÃO PERMITIR INSERÇÃO DUPLICADA DE "RA" ......................
@@ -30901,10 +30900,13 @@ function digitarRaAluno() {
             return ra === raInformado;
         });
         if (raInformado === ra) {
+            audioErroWindows.play();
             alert("Votação concluida para o RA informado!!");
-            recarregarPaginaMae();
+            setTimeout(() => {
+                recarregarPaginaMae();
+            }, 1500);
         }
-        //.................................................
+        //...............................................
         rasVotantes.push(raInformado);
         console.log(rasVotantes);
         localStorage.setItem("ListaVotantes", JSON.stringify(rasVotantes));
@@ -30916,12 +30918,16 @@ function digitarRaAluno() {
 
         // Se o RA informado for igual a 1010, encerra a votação, função a ser implementada
     } else if (raInformado === 1010) {
+        audioUrna.play();
         alert("VOTAÇÃO ENCERRADA!!");
         // fUNÇÃO DE ENCERRAMENTO: a página deverá apresentar a computação dos votos(total, válidos, nulos, candidatos 01 e 02)
         encerraVotacao();
     } else {
+        audioErroUrna.play();
         alert("RA INVÁLIDO!!!!");
-        recarregarPaginaMae();
+        setTimeout(() => {
+            recarregarPaginaMae();
+        }, 1500);
     }
 }
 
