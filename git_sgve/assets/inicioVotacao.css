@@ -3,6 +3,11 @@
     /* padding-top: auto; */
 }
 
+#span-relogio {
+    width: 60px;
+    border-radius: 15%;
+}
+
 #titulos {
     /* background-color: rgb(176, 189, 158); */
     /* font-size: 2em; */

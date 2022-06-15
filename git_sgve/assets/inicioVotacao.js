@@ -30868,19 +30868,94 @@ let votosCandidato01 = document.getElementById("span-votos-candidato01");
 let votosCandidato02 = document.getElementById("span-votos-candidato02");
 let votosNulos = document.getElementById("span-votos-nulos");
 let spanResultados = document.getElementById("span-resultado");
+
 const audioUrna = new Audio("./assets/urna01.mp3");
 const audioErroUrna = new Audio("./assets/Erro.mp3");
 const audioErroWindows = new Audio("./assets/ErroWindows.mp3");
 
-//.......................................................................................
+var data = new Date();
+var hor = data.getHours();
+var min = data.getMinutes();
+var seg = data.getSeconds();
 
 // Exibindo numa variável apenas o elemento "RA"(RAs) do objeto aluno
 const listaRaAlunos = dadosAlunos.map(({ RA }) => RA);
 
-window.onload = (digitarRaAluno);
+// window.onload = (digitarRaAluno);
+// window.onload = (relogio);
+relogio();
+
+function relogio() {
+    var data = new Date();
+    var hor = data.getHours();
+    var min = data.getMinutes();
+    var seg = data.getSeconds();
+
+    if (hor < 10) {
+        hor = "0" + hor;
+    }
+    if (min < 10) {
+        min = "0" + min;
+    }
+    if (seg < 10) {
+        seg = "0" + seg;
+    }
+    var horas = hor + ":" + min + ":" + seg;
+
+
+    let relogioNaTela = document.getElementById("span-relogio").value = horas;
+
+    // if (relogioNaTela === 10 + ":" + 52 + ":" + 00) {
+    //     digitarRaAluno(false);
+    //     audioUrna.play();
+    //     alert("VOTAÇÃO ENCERRADA!!");
+    //     // fUNÇÃO DE ENCERRAMENTO: a página deverá apresentar a computação dos votos(total, válidos, nulos, candidatos 01 e 02)
+    //     setTimeout(() => {
+    //         encerraVotacao();
+    //     }, 1500);
+    // }
+}
+
+let timer = setInterval(relogio, 1000);
+
+// window.onload = (digitarRaAluno);
+digitarRaAluno();
 
 function digitarRaAluno() {
+    tempoEncerraVotacao();
+
+    function tempoEncerraVotacao() {
+        var data = new Date();
+        var hor = data.getHours();
+        var min = data.getMinutes();
+        var seg = data.getSeconds();
+
+        if (hor < 10) {
+            hor = "0" + hor;
+        }
+        if (min < 10) {
+            min = "0" + min;
+        }
+        if (seg < 10) {
+            seg = "0" + seg;
+        }
+        var horas = hor + ":" + min + ":" + seg;
+
+        if (horas === 11 + ":" + 44 + ":" + 00) {
+            // digitarRaAluno(false);
+            audioUrna.play();
+            alert("VOTAÇÃO ENCERRADA!!");
+            // fUNÇÃO DE ENCERRAMENTO: a página deverá apresentar a computação dos votos(total, válidos, nulos, candidatos 01 e 02)
+            setTimeout(() => {
+                encerraVotacao();
+            }, 1500);
+        }
+    }
+
     let raInformado = Number(prompt("digite seu RA ou o código de encerramento"));
+    // let raInformado = inputNumeroCandidato.value;
+    // console.log(raInformado);
+
 
     let rasVotantes = JSON.parse(localStorage.getItem("ListaVotantes"));
     console.log(rasVotantes);
@@ -30888,13 +30963,16 @@ function digitarRaAluno() {
     let raEncontrado = listaRaAlunos.find(function(raEncontrado) {
         return raEncontrado === raInformado;
     });
-
+    // Se o informado pelo eleitor constar na lista de RAs de aluno e...
     if (raEncontrado === raInformado) {
+        // ... verifica se a lista de RAs com voto já registrado está vazia(nula); sendo...
         if (rasVotantes == null) {
+            //... criada uma lista (array) vazio para ir recebendo os RAs votantes e...
             localStorage.setItem("ListaVotantes", "[]");
             rasVotantes = [];
             console.log(rasVotantes);
         }
+
         // .......... REVER ESTA CONDICIONAL PARA NÃO PERMITIR INSERÇÃO DUPLICADA DE "RA" ......................
         let ra = JSON.parse(localStorage.ListaVotantes).find(function(ra) {
             return ra === raInformado;
@@ -30906,14 +30984,16 @@ function digitarRaAluno() {
                 recarregarPaginaMae();
             }, 1000);
         }
-        //.................................................
+
+        // ... Adiciona o RA informado à lista dos RAs que já votaram, armazenando...
         rasVotantes.push(raInformado);
         console.log(rasVotantes);
+        // ...essa lista no localStorage e...
         localStorage.setItem("ListaVotantes", JSON.stringify(rasVotantes));
         console.log(localStorage.ListaVotantes);
 
 
-        // libera a página para captura do evento de teclado para manipular o input
+        // ...libera a página para captura do evento de teclado para manipular o input
         inputNumeroCandidato.addEventListener("keyup", votar);
 
         // Se o RA informado for igual a 1010, encerra a votação, função a ser implementada
@@ -30923,14 +31003,14 @@ function digitarRaAluno() {
         // fUNÇÃO DE ENCERRAMENTO: a página deverá apresentar a computação dos votos(total, válidos, nulos, candidatos 01 e 02)
         setTimeout(() => {
             encerraVotacao();
-        }, 1000);
+        }, 1500);
 
     } else {
         audioErroUrna.play();
         alert("RA INVÁLIDO!!!!");
         setTimeout(() => {
             recarregarPaginaMae();
-        }, 1000);
+        }, 1500);
     }
 }
 
@@ -31003,7 +31083,6 @@ function computarVotosCandidato01() {
         }
         // // Invocando a função para computar total de votos válidos
         totalVotosValidos();
-
     }
 }
 
@@ -31027,7 +31106,6 @@ function computarVotosCandidato02() {
         }
         // // Invocando a função para computar total de votos válidos
         totalVotosValidos();
-
     }
 }
 
@@ -31144,4 +31222,5 @@ function encerraVotacao() {
         spanResultados.innerHTML = "CANDIDATO VENCEDOR: <br>" + (votosCandidato02.innerHTML) + " <br> VOTOS";
         console.log(spanResultados.innerHTML);
     }
+
 }
