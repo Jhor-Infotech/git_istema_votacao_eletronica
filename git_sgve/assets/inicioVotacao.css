@@ -6,6 +6,8 @@
 #span-relogio {
     width: 60px;
     border-radius: 15%;
+    color: white;
+    background-color: black;
 }
 
 #titulos {
