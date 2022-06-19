@@ -30807,12 +30807,54 @@ let dadosAlunos = [{
 // Exibindo numa variável apenas o elemento "RA"(RAs) do objeto aluno
 const listaRaAlunos = dadosAlunos.map(({ RA }) => RA);
 // Exibindo no console avariável ccom array contendo apenas os RAs de cada objeto aluno (dadosAlunos)
-// console.log(listaRaAlunos);
-console.log(listaRaAlunos[20]);
+console.log(listaRaAlunos);
+// console.log(listaRaAlunos[20]);
 
+/*
+
+// Se não existir a chave RA no localStorage (RA == null: nulo)...;
 if (localStorage.RA == null) {
-    console.log("Não há RAs armazenados no localStorage");
-    localStorage.RA = listaRaAlunos;    
+    // Cria a chave RA no localStorage e atribui o array listaDeAlunos como valor (localStorage.RA = listaRaAlunos);    
+    localStorage.RA = listaRaAlunos;
+    // console.log(localStorage.RA);
 }
+*/
 
-console.log(localStorage.RA);
+eleitorValidado = [];
+
+let entradaDeRa = document.getElementById("numero-candidato");
+entradaDeRa.focus();
+
+entradaDeRa.addEventListener("keyup", validaRa);
+
+function validaRa(event){
+    
+    if (event.key === "Enter"){
+        // Se nenhum valor for digitado, dispara um ALERT de orientação
+        if(entradaDeRa.value === ""){
+            alert("DIGITE UM NÚMERO VÁLIDO DE DOCUMENTO!");
+            entradaDeRa.value="";
+        // Senão, se algum valor for digitado, verifica se esse valor existe na lista de documentos
+        } else if(entradaDeRa.value != ""){
+            let raVerificado = listaRaAlunos.find(function (raVerificado) {
+                return raVerificado == entradaDeRa.value;
+            });
+            // console.log(raVerificado);
+            // console.log(entradaDeRa.value);
+            // Se o valor digitado existir na lista, esse valor vai para lista conferidos e não poderá ser usado novamente
+            if(raVerificado == entradaDeRa.value){
+                alert("RA ENCONTRADO");  
+                eleitorValidado.push(raVerificado);
+                entradaDeRa.value = "";
+                console.log(eleitorValidado);
+                // location.reload();
+            }
+
+
+        } else{
+             alert("RA não encontrado");
+             location.reload();
+            }
+    // console.log(raInformado);
+    }
+}
