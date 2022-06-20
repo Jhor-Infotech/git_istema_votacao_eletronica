@@ -30810,51 +30810,47 @@ const listaRaAlunos = dadosAlunos.map(({ RA }) => RA);
 console.log(listaRaAlunos);
 // console.log(listaRaAlunos[20]);
 
-/*
-
-// Se não existir a chave RA no localStorage (RA == null: nulo)...;
-if (localStorage.RA == null) {
-    // Cria a chave RA no localStorage e atribui o array listaDeAlunos como valor (localStorage.RA = listaRaAlunos);    
-    localStorage.RA = listaRaAlunos;
-    // console.log(localStorage.RA);
-}
-*/
-
-eleitorValidado = [];
-
+var eleitorValidado = [];
 let entradaDeRa = document.getElementById("numero-candidato");
 entradaDeRa.focus();
 
 entradaDeRa.addEventListener("keyup", validaRa);
 
-function validaRa(event){
-    
-    if (event.key === "Enter"){
+function validaRa(event) {
+
+    if (event.key === "Enter") {
         // Se nenhum valor for digitado, dispara um ALERT de orientação
-        if(entradaDeRa.value === ""){
+        if (entradaDeRa.value === "") {
             alert("DIGITE UM NÚMERO VÁLIDO DE DOCUMENTO!");
-            entradaDeRa.value="";
-        // Senão, se algum valor for digitado, verifica se esse valor existe na lista de documentos
-        } else if(entradaDeRa.value != ""){
-            let raVerificado = listaRaAlunos.find(function (raVerificado) {
-                return raVerificado == entradaDeRa.value;
+            entradaDeRa.value = "";
+            // Senão, se algum valor for digitado, verifica se esse valor existe na lista de documentos
+        } else if (entradaDeRa.value != "") {
+            let itemListaRaAlunos = listaRaAlunos.find(function(itemListaRaAlunos) {
+                return itemListaRaAlunos == entradaDeRa.value;
             });
-            // console.log(raVerificado);
-            // console.log(entradaDeRa.value);
+
+            let conferidos = eleitorValidado.find(function(conferidos) {
+                return conferidos == entradaDeRa.value;
+            });
             // Se o valor digitado existir na lista, esse valor vai para lista conferidos e não poderá ser usado novamente
-            if(raVerificado == entradaDeRa.value){
-                alert("RA ENCONTRADO");  
-                eleitorValidado.push(raVerificado);
-                entradaDeRa.value = "";
+            if (itemListaRaAlunos == entradaDeRa.value && conferidos != entradaDeRa.value) {
+                alert("RA ENCONTRADO");
+
+                eleitorValidado.push(itemListaRaAlunos);
+
+                localStorage.listaDeConferidos = eleitorValidado;
                 console.log(eleitorValidado);
-                // location.reload();
+                console.log(localStorage.listaDeConferidos);
+                entradaDeRa.value = "";
+            } else if (entradaDeRa.value == conferidos) {
+                alert("Este documento já foi utilizado!");
+                entradaDeRa.value = "";
+            } else {
+                alert("RA não encontrado");
+                location.reload();
             }
 
+        }
 
-        } else{
-             alert("RA não encontrado");
-             location.reload();
-            }
-    // console.log(raInformado);
     }
 }

@@ -1,4 +1,3 @@
-
 // Variável vinculando o elemento HTML "input" ao JS para manipulação
 let inputNumeroCandidato = document.getElementById("numero-candidato");
 inputNumeroCandidato.focus();
@@ -41,14 +40,14 @@ function relogio() {
     if (horas === 16 + ":" + 40 + ":" + 40) {
         tituloOrientacao.textContent = "VOTAÇÃO ENCERRADA!";
         setTimeout(() => {
-           encerraVotacao();
-           inputNumeroCandidato.style.display="none";
-        }, 500);    
+            encerraVotacao();
+            inputNumeroCandidato.style.display = "none";
+        }, 500);
     }
 }
 let timer = setInterval(relogio, 1000);
 
-    // // Capturando evento de teclado para manipular o input
+// // Capturando evento de teclado para manipular o input
 inputNumeroCandidato.addEventListener("keyup", votar);
 
 // Função de processamento, computaçãodo e registro do voto em localStorage
@@ -80,7 +79,7 @@ function votar(event) {
             inputNumeroCandidato.value = "";
             // return;
 
-        } else if(inputNumeroCandidato.value == parseInt(1010)) {
+        } else if (inputNumeroCandidato.value == parseInt(1010)) {
             encerraVotacao();
             inputNumeroCandidato.style.display = "none";
         } else {
