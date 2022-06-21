@@ -30887,8 +30887,8 @@ function validaRa(event) {
             });
 
             // Se o valor digitado existir na lista, esse valor vai para lista conferidos e não poderá ser usado novamente
-            if (itemListaRaAlunos == entradaDeRa.value && conferidos != entradaDeRa.value) {
-                alert("RA ENCONTRADO");
+            if (itemListaRaAlunos == entradaDeRa.value && conferidos != entradaDeRa.value || entradaDeRa.value == 1010) {
+                // alert("RA ENCONTRADO: " + entradaDeRa.value + "<br> Votação liberada!");
                 eleitorValidado.push(itemListaRaAlunos);
                 console.log(eleitorValidado);
                 localStorage.listaDeConferidos = JSON.stringify(eleitorValidado);

@@ -1,9 +1,16 @@
+:root {
+    background-color: lightpink;
+    /* padding-top: auto; */
+}
+
 #relogio {
     background-color: black;
     color: white;
-    width: 60px;
+    width: 160px;
     border-radius: 15%;
     text-align: center;
+    font-size: 2em;
+    margin: 20px;
 }
 
 #titulos {
@@ -13,6 +20,7 @@
     /* height: 55px; */
     height: auto;
     /* padding: 3px; */
+    margin-top: auto;
     border-radius: 8px;
 }
 
@@ -21,15 +29,18 @@
     width: auto;
     height: auto;
     text-align: center;
-    /* font-size: 2em; */
+    font-size: 2em;
+    font-weight: bold;
     margin: 50px;
-    padding-top: 55px;
+    padding: 55px;
     border-radius: 155px;
 }
 
 #numero-documento {
     display: inline-block;
-    background-color: rgb(247, 226, 226);
+    /* background-color: rgb(247, 226, 226); */
+    background-color: blue;
+    color: white;
     width: auto;
     text-align: center;
     height: auto;
@@ -40,11 +51,13 @@
 }
 
 #span-votos-registrados {
-    background-color: aliceblue;
+    /* background-color: aliceblue; */
+    background-color: black;
+    color: aliceblue;
     display: inline-block;
     width: auto;
     height: auto;
     margin: 5px;
     padding: 5px;
-    border-radius: 15px;
+    /* border-radius: 15px; */
 }
