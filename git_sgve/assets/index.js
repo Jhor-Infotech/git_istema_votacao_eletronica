@@ -30842,11 +30842,8 @@ let votosRegistrados = document.getElementById("span-votos-registrados");
 votosRegistrados.innerHTML = "Votos computados <br> " + JSON.parse(votos);
 // console.log(votosRegistrados.innerHTML);
 console.log(votosRegistrados.innerHTML);
-
-
 // Exibindo no console avariável com array de objetos (dadosAlunos)
 // console.log(JSON.stringify(dadosAlunos));
-
 // Exibindo numa variável apenas o elemento "RA"(RAs) do objeto aluno
 const listaRaAlunos = dadosAlunos.map(({ RA }) => RA);
 // Exibindo no console avariável ccom array contendo apenas os RAs de cada objeto aluno (dadosAlunos)

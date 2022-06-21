@@ -1,5 +1,6 @@
 :root {
-    background-color: lightpink;
+    /* background-color: lightpink; */
+    background-color: lightgray;
     /* padding-top: auto; */
 }
 
@@ -38,9 +39,9 @@
 
 #numero-documento {
     display: inline-block;
-    /* background-color: rgb(247, 226, 226); */
-    background-color: blue;
-    color: white;
+    background-color: rgb(247, 226, 226);
+    /* background-color: blue; */
+    /* color: white; */
     width: auto;
     text-align: center;
     height: auto;
@@ -51,7 +52,7 @@
 }
 
 #span-votos-registrados {
-    /* background-color: aliceblue; */
+    background-color: aliceblue;
     background-color: black;
     color: aliceblue;
     display: inline-block;
