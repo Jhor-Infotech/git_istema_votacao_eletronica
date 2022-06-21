@@ -12,9 +12,8 @@ function votar(event) {
 
             opener.computarVotosCandidato01();
             opener.computarTotalVotos();
-            opener.recarregarPaginaMae();
-            window.close();
             // opener.recarregarPaginaMae();
+            opener.autoFechamentoPaginaMae();
             window.close();
         }, 2000);
         som.play();

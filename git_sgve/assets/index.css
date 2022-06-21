@@ -1,9 +1,4 @@
-:root {
-    background-color: lightpink;
-    /* padding-top: auto; */
-}
-
-#span-relogio {
+#relogio {
     background-color: black;
     color: white;
     width: 60px;
@@ -32,7 +27,7 @@
     border-radius: 155px;
 }
 
-#numero-candidato {
+#numero-documento {
     display: inline-block;
     background-color: rgb(247, 226, 226);
     width: auto;
@@ -44,46 +39,12 @@
     border-radius: 155px;
 }
 
-#span-votos-computados {
+#span-votos-registrados {
     background-color: aliceblue;
     display: inline-block;
     width: auto;
     height: auto;
     margin: 5px;
     padding: 5px;
-    border-radius: 15px;
-}
-
-#div-span {
-    background-color: blueviolet;
-    text-align: center;
-    width: auto;
-    height: auto;
-    /* font-size: 2em; */
-    /* margin: 50px; */
-    /* padding-top: 55px; */
-    border-radius: 15px;
-}
-
-.div-span {
-    background-color: lightseagreen;
-    display: inline-block;
-    width: 20%;
-    /* width: auto; */
-    height: 35px;
-    margin: 15px;
-    padding: 5px;
-    text-align: center;
-    border-radius: 15px;
-}
-
-#span-resultado {
-    background-color: lightgreen;
-    text-align: center;
-    width: auto;
-    height: auto;
-    font-size: 3em;
-    /* margin: 50px; */
-    /* padding-top: 55px; */
     border-radius: 15px;
 }

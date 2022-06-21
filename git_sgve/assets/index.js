@@ -30801,6 +30801,49 @@ let dadosAlunos = [{
         "Escola": "CONDOMINIO VARGEM GRANDE II"
     }
 ];
+
+relogio();
+
+function relogio() {
+    var data = new Date();
+    var hor = data.getHours();
+    var min = data.getMinutes();
+    var seg = data.getSeconds();
+
+    if (hor < 10) {
+        hor = "0" + hor;
+    }
+    if (min < 10) {
+        min = "0" + min;
+    }
+    if (seg < 10) {
+        seg = "0" + seg;
+    }
+    var horas = hor + ":" + min + ":" + seg;
+
+    let relogioNaTela = document.getElementById("relogio").value = horas;
+
+    if (horas === 08 + ":" + 52 + ":" + 00) {
+
+        alert("ACABOU");
+        // tituloOrientacao.textContent = "VOTAÇÃO ENCERRADA!";
+        // setTimeout(() => {
+        //     encerraVotacao();
+        //     inputNumeroCandidato.style.display = "none";
+        // }, 500);
+    }
+}
+let timer2 = setInterval(relogio, 1000);
+
+
+let votos = JSON.stringify(localStorage.getItem("votosComputados"))
+console.log(votos);
+let votosRegistrados = document.getElementById("span-votos-registrados");
+votosRegistrados.innerHTML = "Votos computados <br> " + JSON.parse(votos);
+// console.log(votosRegistrados.innerHTML);
+console.log(votosRegistrados.innerHTML);
+
+
 // Exibindo no console avariável com array de objetos (dadosAlunos)
 // console.log(JSON.stringify(dadosAlunos));
 
@@ -30810,8 +30853,14 @@ const listaRaAlunos = dadosAlunos.map(({ RA }) => RA);
 console.log(listaRaAlunos);
 // console.log(listaRaAlunos[20]);
 
-var eleitorValidado = [];
-let entradaDeRa = document.getElementById("numero-candidato");
+// Inicializando array vazio de dcumento validado
+let eleitorValidado = [];
+// persistindo os documentos validados.
+eleitorValidado = JSON.parse(localStorage.getItem("listaDeConferidos"));
+console.log(eleitorValidado);
+console.log(localStorage.listaDeConferidos);
+
+let entradaDeRa = document.getElementById("numero-documento");
 entradaDeRa.focus();
 
 entradaDeRa.addEventListener("keyup", validaRa);
@@ -30819,38 +30868,49 @@ entradaDeRa.addEventListener("keyup", validaRa);
 function validaRa(event) {
 
     if (event.key === "Enter") {
+        location.reload();
         // Se nenhum valor for digitado, dispara um ALERT de orientação
         if (entradaDeRa.value === "") {
             alert("DIGITE UM NÚMERO VÁLIDO DE DOCUMENTO!");
             entradaDeRa.value = "";
             // Senão, se algum valor for digitado, verifica se esse valor existe na lista de documentos
         } else if (entradaDeRa.value != "") {
+
             let itemListaRaAlunos = listaRaAlunos.find(function(itemListaRaAlunos) {
                 return itemListaRaAlunos == entradaDeRa.value;
             });
-
+            if (eleitorValidado == null) {
+                eleitorValidado = [];
+            }
             let conferidos = eleitorValidado.find(function(conferidos) {
                 return conferidos == entradaDeRa.value;
             });
+
             // Se o valor digitado existir na lista, esse valor vai para lista conferidos e não poderá ser usado novamente
             if (itemListaRaAlunos == entradaDeRa.value && conferidos != entradaDeRa.value) {
                 alert("RA ENCONTRADO");
-
                 eleitorValidado.push(itemListaRaAlunos);
-
-                localStorage.listaDeConferidos = eleitorValidado;
                 console.log(eleitorValidado);
+                localStorage.listaDeConferidos = JSON.stringify(eleitorValidado);
                 console.log(localStorage.listaDeConferidos);
+                // ...........................................................................
+                // Abre a janela de votação
+                window.open("./inicioVotacao.html");
+                // location.reload();
+                // ...........................................................................
                 entradaDeRa.value = "";
+                location.reload();
             } else if (entradaDeRa.value == conferidos) {
-                alert("Este documento já foi utilizado!");
+                alert("Eleitor já votou!");
                 entradaDeRa.value = "";
             } else {
                 alert("RA não encontrado");
                 location.reload();
             }
-
         }
-
     }
+}
+
+function recarregarPagina() {
+    location.reload();
 }

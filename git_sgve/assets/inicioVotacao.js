@@ -4,12 +4,15 @@ inputNumeroCandidato.focus();
 
 // Variável vinculando o elemento HTML "span-votos-computados" ao JS para manipulação
 let votosComputados = document.getElementById("span-votos-computados");
+votosComputados.innerHTML = "Votos computados <br> " + (localStorage.votosComputados);
 let votosValidos = document.getElementById("span-votos-validos");
 let votosCandidato01 = document.getElementById("span-votos-candidato01");
 let votosCandidato02 = document.getElementById("span-votos-candidato02");
 let votosNulos = document.getElementById("span-votos-nulos");
 let spanResultados = document.getElementById("span-resultado");
 let tituloOrientacao = document.getElementById("titulo-orientacao");
+let ocultaResultados = document.getElementById("div-span");
+ocultaResultados.style.display = "none";
 
 const audioUrna = new Audio("./assets/urna01.mp3");
 const audioErroUrna = new Audio("./assets/Erro.mp3");
@@ -34,15 +37,16 @@ function relogio() {
     }
     var horas = hor + ":" + min + ":" + seg;
 
-
     let relogioNaTela = document.getElementById("span-relogio").value = horas;
 
-    if (horas === 16 + ":" + 40 + ":" + 40) {
-        tituloOrientacao.textContent = "VOTAÇÃO ENCERRADA!";
-        setTimeout(() => {
-            encerraVotacao();
-            inputNumeroCandidato.style.display = "none";
-        }, 500);
+    if (horas === 08 + ":" + 52 + ":" + 00) {
+
+        alert("ACABOU");
+        // tituloOrientacao.textContent = "VOTAÇÃO ENCERRADA!";
+        // setTimeout(() => {
+        //     encerraVotacao();
+        //     inputNumeroCandidato.style.display = "none";
+        // }, 500);
     }
 }
 let timer = setInterval(relogio, 1000);
@@ -65,8 +69,11 @@ function votar(event) {
 
         } else if (inputNumeroCandidato.value == parseInt(01)) {
             // else if (inputNumeroCandidato.value === "0001")
+
             window.open('./candidato01.html', 'popup', "width=700, height=700, top=100, left=600, scrollbars=no");
             inputNumeroCandidato.value = "";
+            // Aguarda 10 segundos para o auto fechamento da página, caso o eleitor não vote
+
         } else if (inputNumeroCandidato.value == parseInt(02)) {
             // popupCandidatos(02);
             window.open('./candidato02.html', 'popup', "width=700, height=700, top=100, left=600, scrollbars=no");
@@ -82,6 +89,7 @@ function votar(event) {
         } else if (inputNumeroCandidato.value == parseInt(1010)) {
             encerraVotacao();
             inputNumeroCandidato.style.display = "none";
+            ocultaResultados.style.display = "block";
         } else {
             alert("Digite um número válido no formato 0123");
             inputNumeroCandidato.value = "";
@@ -89,6 +97,14 @@ function votar(event) {
         }
     }
 }
+
+// Aguarda 10 segundos para o auto fechamento da página, caso o eleitor não vote
+
+// setTimeout(() => {
+//     window.close();
+
+// }, 10000);
+
 // Funções para contabilizar os votos, após a confirmação "ENTER" nas janelas filhas "popupCandidatos", e persisti-los no localStorage
 
 function computarVotosCandidato01() {
@@ -252,6 +268,10 @@ function encerraVotacao() {
 
 }
 
-function recarregarPaginaMae() {
-    location.reload();
+// function recarregarPaginaMae() {
+//     location.reload();
+// }
+
+function autoFechamentoPaginaMae() {
+    window.close();
 }
